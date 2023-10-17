@@ -13,7 +13,8 @@ class BreakingNewsResponse extends Equatable {
 
   factory BreakingNewsResponse.fromJson(Map<String, dynamic> json) {
     var articleList = json['articles'] as List;
-    List<Article> articles = articleList.map((i) => Article.fromJson(i)).toList();
+    List<Article> articles =
+        articleList.map((i) => Article.fromJson(i)).toList();
 
     return BreakingNewsResponse(
       status: json['status'],
@@ -26,7 +27,7 @@ class BreakingNewsResponse extends Equatable {
   bool? get stringify => true;
 
   @override
-  List<Object?> get props => [ status,totalResults,articles ];
+  List<Object?> get props => [status, totalResults, articles];
 }
 
 class Article {
@@ -53,13 +54,13 @@ class Article {
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
       source: ArticleSource.fromJson(json['source']),
-      author: json['author'],
-      title: json['title'],
-      description: json['description'],
-      url: json['url'],
-      urlToImage: json['urlToImage'],
-      publishedAt: json['publishedAt'],
-      content: json['content'],
+      author: json['author'] ?? "",
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      url: json['url'] ?? "",
+      urlToImage: json['urlToImage'] ?? "",
+      publishedAt: json['publishedAt'] ?? "",
+      content: json['content'] ?? "",
     );
   }
 }
