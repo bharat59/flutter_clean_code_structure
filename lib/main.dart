@@ -5,7 +5,9 @@ import 'package:oktoast/oktoast.dart';
 import 'src/config/router/app_router.dart';
 import 'src/config/themes/app_themes.dart';
 import 'src/domain/repositories/api_repository.dart';
+import 'src/domain/repositories/database_repository.dart';
 import 'src/locator.dart';
+import 'src/presentation/cubits/local_articles_cubit.dart';
 import 'src/presentation/cubits/remote_articles_cubit.dart';
 import 'src/utils/constants/string.dart';
 
@@ -27,6 +29,11 @@ class MyApp extends StatelessWidget {
           create: (context) => RemoteArticlesCubit(
             locator<ApiRepository>(),
           )..getBreakingNewsArticles(),
+        ),
+        BlocProvider(
+          create: (context) => LocalArticlesCubit(
+            locator<DatabaseRepository>(),
+          )..getAllSavedArticles(),
         )
       ],
       child: OKToast(

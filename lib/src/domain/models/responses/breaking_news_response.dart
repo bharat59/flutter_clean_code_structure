@@ -1,9 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:floor/floor.dart';
+
+import '../../../utils/constants/string.dart';
 
 class BreakingNewsResponse extends Equatable {
-  String status;
-  int totalResults;
-  List<Article> articles;
+  final String status;
+  final int totalResults;
+  final List<Article> articles;
 
   BreakingNewsResponse({
     required this.status,
@@ -30,8 +33,11 @@ class BreakingNewsResponse extends Equatable {
   List<Object?> get props => [status, totalResults, articles];
 }
 
+@Entity(tableName: articlesTableName)
 class Article {
-  ArticleSource source;
+  @PrimaryKey(autoGenerate: true)
+  final int? id;
+  Source source;
   String author;
   String title;
   String description;
@@ -41,6 +47,7 @@ class Article {
   String content;
 
   Article({
+    this.id,
     required this.source,
     required this.author,
     required this.title,
@@ -53,7 +60,8 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      source: ArticleSource.fromJson(json['source']),
+      id: json['id'],
+      source: Source.fromJson(json['source']),
       author: json['author'] ?? "",
       title: json['title'] ?? "",
       description: json['description'] ?? "",
@@ -65,17 +73,17 @@ class Article {
   }
 }
 
-class ArticleSource {
+class Source {
   String? id;
   String? name;
 
-  ArticleSource({
+  Source({
     this.id,
     this.name,
   });
 
-  factory ArticleSource.fromJson(Map<String, dynamic> json) {
-    return ArticleSource(
+  factory Source.fromJson(Map<String, dynamic> json) {
+    return Source(
       id: json['id'],
       name: json['name'],
     );

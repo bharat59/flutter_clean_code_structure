@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../config/router/app_router.dart';
 import '../../domain/models/responses/breaking_news_response.dart';
 import '../../utils/extensions/scroll_controller_extension.dart';
 import '../cubits/remote_articles_cubit.dart';
@@ -29,6 +30,16 @@ class BreakingNewsView extends HookWidget {
           'Daily News',
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () => appRouter.push(const SavedArticlesViewRoute()),
+            behavior: HitTestBehavior.opaque,
+            child: const Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Icon(Ionicons.bookmark),
+            ),
+          )
+        ],
       ),
       body: BlocBuilder<RemoteArticlesCubit, RemoteArticlesState>(
         builder: (_, state) {
@@ -62,7 +73,12 @@ class BreakingNewsView extends HookWidget {
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (context, index) => ArticleWidget(article: articles[index]),
+            (context, index) => ArticleWidget(
+              article: articles[index],
+              onArticlePressed: (e) => appRouter.push(
+                ArticleDetailsViewRoute(article: e)
+              ),
+            ),
             childCount: articles.length,
           ),
         ),
