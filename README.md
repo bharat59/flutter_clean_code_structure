@@ -5,26 +5,26 @@ News app demo with clean architecture.
 ## Packages used 
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
+- sdk: '>=3.1.1 <4.0.0'
 
-cupertino_icons: ^1.0.0
-ionicons: ^0.2.2
-retrofit: ^3.3.0
-dio: ^4.0.6
-flutter_bloc: ^8.1.2
-flutter_hooks: ^0.18.5+1
-get_it: ^7.2.0
-floor: ^1.4.1
-equatable: ^2.0.5
-oktoast: ^3.3.1
-awesome_dio_interceptor: ^0.0.2+4
-auto_route: ^5.0.4
-lint: ^2.0.1
-auto_route_generator: ^5.0.3
-retrofit_generator: ^4.1.2
-floor_generator: ^1.4.1
-build_runner: ^2.3.3
-flutter_lints: ^2.0.0
+- cupertino_icons: ^1.0.0
+- ionicons: ^0.2.2
+- retrofit: ^3.3.0
+- dio: ^4.0.6
+- flutter_bloc: ^8.1.2
+- flutter_hooks: ^0.18.5+1
+- get_it: ^7.2.0
+- floor: ^1.4.1
+- equatable: ^2.0.5
+- oktoast: ^3.3.1
+- awesome_dio_interceptor: ^0.0.2+4
+- auto_route: ^5.0.4
+- lint: ^2.0.1
+- auto_route_generator: ^5.0.3
+- retrofit_generator: ^4.1.2
+- floor_generator: ^1.4.1
+- build_runner: ^2.3.3
+- flutter_lints: ^2.0.0
 
 ## Clean Architecture
 
